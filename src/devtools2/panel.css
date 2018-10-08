@@ -9,7 +9,7 @@
 body {
   margin: 0;
   font-family: "Open Sans", "Helvetica Neue", "Lucida Grande", sans-serif;
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
   background: #eee;
 }
 html, body, .main {
@@ -51,7 +51,7 @@ input, button {
   flex: 1;
   display: flex;
   width: 100%;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
 }
 .context {
   flex: 1 0 auto;
@@ -63,7 +63,7 @@ input, button {
 .tab-container {
   flex: 1;
   display: flex;
-  overflow: auto;
+  /*overflow: auto;*/
 }
 
 .tab-bar {
@@ -95,12 +95,14 @@ input, button {
   border-bottom: solid #3B86E3 2px;
 }
 .context-bar {
+  /*box-sizing: border-box;*/
+
   flex: 0 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  height: 30px;
+  height: 31px; /* Could also be removed */
   width: 100%;
   padding-right: 30px;
   background-color: rgb(238, 238, 238);
@@ -130,7 +132,7 @@ input, button {
   flex-direction: row;
   width: 100%;
   align-items: stretch;
-  overflow: auto;
+  /*overflow: auto;*/
 }
 .split-view-table {
   flex: 0 0 200px;
@@ -158,8 +160,10 @@ input, button {
 }
 .split-view-content {
   display: flex;
+  /*display: block;*/
   flex: 1 0;
   overflow: auto;
+  /*overflow-scrolling: contain;*/
 }
 
 .profile-table {
@@ -191,7 +195,7 @@ input, button {
   max-width: 350px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 .program-container {
@@ -226,7 +230,7 @@ input, button {
 .resource-container {
   flex-direction: column;
   flex: 1 0 auto;
-  overflow: auto;
+  /*overflow: auto;*/
   padding: 20px;
 }
 .resource-container div {
