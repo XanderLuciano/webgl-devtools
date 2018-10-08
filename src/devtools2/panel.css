@@ -10,6 +10,7 @@ body {
   margin: 0px;
   font-family: "Open Sans", "Helvetica Neue", "Lucida Grande", sans-serif;
   overflow-x: hidden;
+  background: #eee;
 }
 html, body, .main {
   height: 100%;
