@@ -23,10 +23,13 @@ Insight is a WebGL debugging toolkit providing a variety of capabilities enablin
 
 ## Installation & Usage
 
-Install Insight from the [Chrome Web Store](https://chrome.google.com/webstore/detail/webgl-insight/djdcbmfacaaocoomokenoalbomllhnko).
+Install Insight from the ~~[Chrome Web Store](https://chrome.google.com/webstore/detail/webgl-insight/djdcbmfacaaocoomokenoalbomllhnko)~~. 
+
+The original creator has abandoned this project. I have compiled together various PR's and bug fixes in order to just restore this project to functional state after 2 years of inactivity. Currently there is no functional extension in the store, and will require you to manually install it.
 
 When the extension is installed, open up the Chrome DevTools panel, click on the "WebGL Insight" tab, and browse to a WebGL application.
 
+![Inspector](https://i.imgur.com/SB3EoZ8.png)
 
 ### Overdraw Inspector
 
@@ -109,4 +112,6 @@ There are 3 possible DevTools to open to debug the extension.
 
 # Releasing
 
-(Guesses from a non-maintainer) Run build/build.sh, which should concatenate the src files and copy to your (Mac) clipboard. Then paste into the top of `content_script_init.js`. 
+~~(Guesses from a non-maintainer) Run build/build.sh, which should concatenate the src files and copy to your (Mac) clipboard. Then paste into the top of `content_script_init.js`. ~~
+
+Currently no idea! Works when you load it directly into Chrome though.
