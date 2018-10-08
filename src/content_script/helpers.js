@@ -10,9 +10,9 @@ helpers.guid = function() {
   }
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
     s4() + '-' + s4() + s4() + s4();
-}
+};
 
-_glEnums = {}
+_glEnums = {};
 helpers.getGLEnumName = function(gl, e) {
   if (Object.keys(_glEnums).length != 0) {
     return _glEnums[e];
@@ -43,7 +43,7 @@ helpers.getGLArgsString = function(gl, args) {
     }
   }
   return argsString;
-}
+};
 
 helpers.getGLArgsList = function(gl, calls) {
   if (calls) {
@@ -54,7 +54,7 @@ helpers.getGLArgsList = function(gl, calls) {
     return argsList;
   }
   return null;
-}
+};
 
 helpers.getTextureSize = function(texture) {
     var size = {};
@@ -75,9 +75,8 @@ helpers.getTextureSize = function(texture) {
             }
         }
     }
-
     return size;
-}
+};
 
 return helpers;
 }());

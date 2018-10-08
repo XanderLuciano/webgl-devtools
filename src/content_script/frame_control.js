@@ -23,7 +23,7 @@ var glpFrameControl = function (gl, window) {
         call.arguments = arguments;
         call.timerId = original.apply(context, arguments);
         return call.timerId;
-    }
+    };
 
     var setFrameCall = function(original, context, arguments) {
         if (paused) {
@@ -35,21 +35,21 @@ var glpFrameControl = function (gl, window) {
 
         requestFrameCall.timerId = original.apply(context, arguments);
         return requestFrameCall.timerId;
-    }
+    };
 
     var cancelFrameCall = function(original, context, arguments) {
         if (arguments[0] == -1) {
             return;
         }
         return original.apply(context, arguments);
-    }
+    };
 
     var nextCall = function(call, originalSet, originalClear) {
         call.timerId = originalSet.call(call.context, function() {
             call.arguments[0]();
             originalClear.call(call.context, call.timerId);
         }, call.arguments[1]);
-    }
+    };
 
     var requestAnimationFrameCall = window.requestAnimationFrame;
     var cancelAnimationFrameCall = window.cancelAnimationFrame;
@@ -60,19 +60,19 @@ var glpFrameControl = function (gl, window) {
 
     window.setInterval = function() {
         return setCall(intervalCall, setIntervalCall, this, arguments);
-    }
+    };
 
     window.setTimeout = function() {
         return setCall(timeoutCall, setTimeoutCall, this, arguments);
-    }
+    };
 
     window.requestAnimationFrame = function() {
         return setFrameCall(requestAnimationFrameCall, this, arguments);
-    }
+    };
 
     window.cancelAnimationFrame = function() {
         return cancelFrameCall(cancelAnimationFrameCall, this, arguments);
-    }
+    };
 
     this.play = function() {
         if (paused) {
@@ -90,7 +90,7 @@ var glpFrameControl = function (gl, window) {
                 setCall(timeoutCall, setTimeoutCall, timeoutCall.context, timeoutCall.arguments);
             }
         }
-    }
+    };
 
     this.pause = function() {
         if (!paused) {
@@ -125,4 +125,4 @@ var glpFrameControl = function (gl, window) {
             }
         }
     }
-}
+};

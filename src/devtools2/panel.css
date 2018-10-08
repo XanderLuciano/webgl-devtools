@@ -7,7 +7,7 @@
 }
 
 body {
-  margin: 0px;
+  margin: 0;
   font-family: "Open Sans", "Helvetica Neue", "Lucida Grande", sans-serif;
   overflow-x: hidden;
   background: #eee;
@@ -204,7 +204,7 @@ input, button {
 }
 .program-element {
   word-wrap: break-all;
-  padding: 0px 20px 0px 20px;
+  padding: 0 20px;
 }
 
 .state-container {
@@ -234,7 +234,7 @@ input, button {
 }
 .resource-img-container {
   background-color: rgb(238, 238, 238);
-  padding: 0px !important;
+  padding: 0 !important;
 }
 .resource-img-container img {
   margin: 20px;

@@ -5,27 +5,36 @@ contextTabs = [
     "States",
     "Resources",
     "Settings"
-]
+];
 
 define(["jsx!tab_bar", "jsx!shaders", "jsx!profiles", "jsx!state_view", "jsx!settings", "messages", "jsx!resources", "jsx!programs"],
 function (TabBar, Shaders, Profiles, StateView, Settings, Messages, Resources, Programs) {
-    var ctx = React.createClass({
+
+    return React.createClass({
+
         getInitialState: function() {
-            return {"currentTab": 0}
+            return {
+                currentTab: 0,
+            }
         },
+
         componentWillMount: function() {
             Messages.sendMessage(this.props.activeContext, messageType.DISABLE_ALL, {});
-            window.addEventListener('unload', function() {
+
+            window.addEventListener('unload', () => {
                 Messages.sendMessage(this.props.activeContext, messageType.DISABLE_ALL, {});
-            }.bind(this))
+            });
         },
+
         changeTab: function(i) {
             Messages.sendMessage(this.props.activeContext, messageType.DISABLE_ALL, {});
-            this.setState({currentTab: i});
+            this.setState({ currentTab: i });
         },
-        render: function() {
-            var tab;
+
+        render() {
+            let tab;
             var key = String(Math.random()); // TODO: Use a unique key to ensure refresh
+
             if (this.state.currentTab == 0) {
                 tab = <Shaders key={key} activeContext={this.props.activeContext}/>;
             } else if (this.state.currentTab == 1) {
@@ -39,11 +48,13 @@ function (TabBar, Shaders, Profiles, StateView, Settings, Messages, Resources, P
             } else {
                 tab = <Settings key={key} activeContext={this.props.activeContext}/>;
             }
+
             return <div className="context">
                 <TabBar tabs={contextTabs} changeTab={this.changeTab} />
-                <div className="tab-container">{tab}</div>
+                <div className="tab-container">
+                    { tab }
+                </div>
             </div>;
-        }
+        },
     });
-    return ctx;
 });

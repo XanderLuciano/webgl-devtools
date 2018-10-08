@@ -1,16 +1,17 @@
-define(["messages"], function (Messages) {
-    var DepthInspector = React.createClass({
+define(["messages"],
+function (Messages) {
+    return React.createClass({
         toggleDepthInspector: function() {
-            var data = {
+            const data = {
                 "enabled": this.refs.depthInspector.checked,
                 "range": {
                     "near": this.refs.depthInspectorNear.value,
-                    "far": this.refs.depthInspectorFar.value
-                }
+                    "far": this.refs.depthInspectorFar.value,
+                },
             };
             Messages.sendMessage(this.props.activeContext, messageType.DEPTH_INSPECTOR, data);
         },
-        render: function() {
+        render() {
             return <div className="container">
                 <div className="heading">
                     Depth Inspector
@@ -34,5 +35,4 @@ define(["messages"], function (Messages) {
             </div>;
         }
     });
-    return DepthInspector;
 });
