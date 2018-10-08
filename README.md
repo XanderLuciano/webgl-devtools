@@ -1,9 +1,7 @@
-![WebGL Insight](http://i.imgur.com/Zb2PHLp.png)
-
 
 ## About
 
-Insight is a WebGL debugging toolkit providing a variety of capabilities enabling more productive WebGL development and more efficient WebGL applications.
+A WebGL debugging toolkit providing a variety of capabilities enabling more productive WebGL development and more efficient WebGL applications.
 
 
 ## Features
@@ -23,11 +21,11 @@ Insight is a WebGL debugging toolkit providing a variety of capabilities enablin
 
 ## Installation & Usage
 
-Install Insight from the ~~[Chrome Web Store](https://chrome.google.com/webstore/detail/webgl-insight/djdcbmfacaaocoomokenoalbomllhnko)~~. 
+Install Insight from the [Chrome Web Store](https://chrome.google.com/webstore/detail/webgl-devtools/hobpbneiaagcbdcmpjmibpmibohpgiga?hl=en-US&authuser=0). 
 
-The original creator has abandoned this project. I have compiled together various PR's and bug fixes in order to just restore this project to functional state after 2 years of inactivity. Currently there is no functional extension in the store, and will require you to manually install it.
+The original creator has abandoned this project. I have compiled together various PR's and bug fixes in order to just restore this project to functional state after 2 years of inactivity.
 
-When the extension is installed, open up the Chrome DevTools panel, click on the "WebGL Insight" tab, and browse to a WebGL application.
+When the extension is installed, open up the Chrome DevTools panel, click on the "WebGL" tab, and browse to a WebGL application.
 
 ![Inspector](https://i.imgur.com/SB3EoZ8.png)
 
