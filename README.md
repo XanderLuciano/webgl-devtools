@@ -112,6 +112,6 @@ There are 3 possible DevTools to open to debug the extension.
 
 # Releasing
 
-~~(Guesses from a non-maintainer) Run build/build.sh, which should concatenate the src files and copy to your (Mac) clipboard. Then paste into the top of `content_script_init.js`. ~~
+~~(Guesses from a non-maintainer) Run build/build.sh, which should concatenate the src files and copy to your (Mac) clipboard. Then paste into the top of `content_script_init.js`.~~
 
 Currently no idea! Works when you load it directly into Chrome though.
