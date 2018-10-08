@@ -1,6 +1,6 @@
 // Adapted from: http://www.howtocreate.co.uk/tutorials/jsexamples/syntax/prepareInline.html
 function convert(inputCode, variableName) {
-    var tempVal = inputCode
+    var tempVal = inputCode;
     var tempNm = variableName;
 
     var quoteStyle = '\"';

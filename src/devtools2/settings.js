@@ -10,7 +10,7 @@ define([], function () {
             return <div className="container">
                         <div className="heading">Settings</div>
                         <div>
-                            Disable WebGL Insight&nbsp;&nbsp;<button onClick={this.disableExtension}>Disable</button>
+                            Disable WebGL devtools&nbsp;&nbsp;<button onClick={this.disableExtension}>Disable</button>
                         </div>
                    </div>;
         }

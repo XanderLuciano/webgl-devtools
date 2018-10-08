@@ -7,22 +7,29 @@ define(function(){
         }
         this.initialize();
     }
+
     Messages.prototype = {
         initialize: function() {
             // Initialize connection
-            var backgroundPageConnection = chrome.runtime.connect({
-                name: "panel"
+            let backgroundPageConnection = chrome.runtime.connect({
+                name: "panel",
             });
 
             backgroundPageConnection.postMessage({
                 name: 'init',
-                tabId: chrome.devtools.inspectedWindow.tabId
+                tabId: chrome.devtools.inspectedWindow.tabId,
             });
 
             this.connection = backgroundPageConnection;
         },
+
         sendMessage: function(context, type, data) {
-            this.connection.postMessage({ "source": "panel", "activeContext": context,  "type": type, "data": data});
+            this.connection.postMessage({
+                "source": "panel",
+                "activeContext": context,
+                "type": type,
+                "data": data
+            });
         }
     };
 
@@ -32,6 +39,5 @@ define(function(){
         }
         return instance;
     };
-
     return Messages.getInstance();
 });
