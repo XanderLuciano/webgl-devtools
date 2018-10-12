@@ -42,6 +42,19 @@
         "128": "static/logo-128.png",
         "256": "static/logo-256.png"
     },
+    "browser_action": {
+        "default_icon": {
+            "16" : "static/logo-16.png",
+            "24" : "static/logo-24.png",
+            "32" : "static/logo-32.png",
+            "48" : "static/logo-48.png",
+            "64" : "static/logo-64.png",
+            "96" : "static/logo-96.png",
+            "128": "static/logo-128.png",
+            "256": "static/logo-256.png"
+        },
+        "default_title": "WebGL devtools"
+    },
     "content_scripts": [
         {
             "run_at": "document_start",
