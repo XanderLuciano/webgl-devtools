@@ -5,7 +5,7 @@ define(["jsx!refresh_icon"], function (RefreshIcon) {
                 <div className="heading">WebGL devtools</div>
                 <RefreshIcon />
                 <div>No WebGL context found on page. Click the refresh button to check again.</div>
-           </div>;
+            </div>;
         }
     });
 });

@@ -51,8 +51,8 @@ function (Ctx, Messages, NoContexts, ContextBarElement, RefreshIcon) {
             contextResult = [];
             for (var i = 0; i < this.state.contexts.length; i++) {
                 el = <ContextBarElement name={this.state.contexts[i].__name}
-                        selected={this.state.activeContext == this.state.contexts[i].__uuid}
-                        onClick={this.handleContextClick.bind(this, this.state.contexts[i].__uuid)} />;
+                                        selected={this.state.activeContext == this.state.contexts[i].__uuid}
+                                        onClick={this.handleContextClick.bind(this, this.state.contexts[i].__uuid)} />;
                 contextResult.push(el);
             }
             return contextResult;

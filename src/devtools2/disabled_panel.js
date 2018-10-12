@@ -8,9 +8,9 @@ define([], function () {
         },
         render: function() {
             return <div className="center">
-                        <div className="heading">WebGL Insight is currently disabled</div>
-                        <button onClick={this.enableExtension}>Click to refresh page and enable</button>
-                   </div>;
+                <div className="heading">WebGL Insight is currently disabled</div>
+                <button onClick={this.enableExtension}>Click to refresh page and enable</button>
+            </div>;
         }
     });
     return DisabledPanel;

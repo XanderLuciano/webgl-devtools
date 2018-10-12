@@ -6,7 +6,7 @@ isEditable = [
     "POLYGON_OFFSET_UNITS",
     "STENCIL_REF",
     "STENCIL_BACK_REF",
-]
+];
 
 define(["messages"], function (Messages) {
     var StateView = React.createClass({
@@ -85,9 +85,9 @@ define(["messages"], function (Messages) {
                     var value = this.state.stateVars[name].value;
                     if (type == "bool") {
                         subEl = <input
-                                    type="checkbox"
-                                    checked={value}
-                                    onClick={this.boolChange.bind(this, name)}/>;
+                            type="checkbox"
+                            checked={value}
+                            onClick={this.boolChange.bind(this, name)}/>;
                     } else if (type == "enum") {
                         if (this.state.enumOptions[name] && this.state.enumOptions[name].length > 1) {
                             var options = this.state.enumOptions[name];
@@ -104,8 +104,8 @@ define(["messages"], function (Messages) {
                     } else if (type == "number") {
                         if (isEditable.indexOf(name) > 0) {
                             subEl = <input type="number"
-                                     defaultValue={value}
-                                     onChange={this.numberChange.bind(this, name)}/>;
+                                           defaultValue={value}
+                                           onChange={this.numberChange.bind(this, name)}/>;
                         } else {
                             subEl = <div>{value}</div>; // Setting not supported
                         }
@@ -130,10 +130,10 @@ define(["messages"], function (Messages) {
         },
         getTabs: function() {
             el = <div className="split-view-table-element split-view-table-element-selected">
-                    <div className="split-view-table-element-text">
-                        State Editor
-                    </div>
-                 </div>
+                <div className="split-view-table-element-text">
+                    State Editor
+                </div>
+            </div>
             return el;
         },
         toggleStateEditor: function() {
@@ -150,26 +150,26 @@ define(["messages"], function (Messages) {
             var table = null;
             if (this.state.enabled) {
                 table = <div className="profile-table">
-                        {this.getStateColumns()}
-                     </div>
+                    {this.getStateColumns()}
+                </div>
             }
 
             return <div className="split-view">
-                    <div className="split-view-table">{this.getTabs()}</div>
-                    <div className="split-view-content">
-                        <div className="state-container">
-                            <div className="state-container-child">
-                                <div className="heading">States</div>
-                                <div>Edit WebGL states. </div>
-                                <div>
-                                    Enable State Editor&nbsp;&nbsp;
-                                    <input ref="stateEditor" type="checkbox" onClick={this.toggleStateEditor} />
-                                </div>
+                <div className="split-view-table">{this.getTabs()}</div>
+                <div className="split-view-content">
+                    <div className="state-container">
+                        <div className="state-container-child">
+                            <div className="heading">States</div>
+                            <div>Edit WebGL states. </div>
+                            <div>
+                                Enable State Editor&nbsp;&nbsp;
+                                <input ref="stateEditor" type="checkbox" onClick={this.toggleStateEditor} />
                             </div>
-                            {table}
                         </div>
+                        {table}
                     </div>
                 </div>
+            </div>
         }
     });
     return StateView;

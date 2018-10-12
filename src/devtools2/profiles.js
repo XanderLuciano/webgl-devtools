@@ -68,10 +68,10 @@ define(["messages", "jsx!profile_table", "jsx!profile_graph"], function (Message
                 }
 
                 el = <div className={className} onClick={this.switchTab.bind(this, i)}>
-                        <div className={".split-view-table-element-text"}>
-                            {tabNames[i]}
-                        </div>
-                     </div>
+                    <div className={".split-view-table-element-text"}>
+                        {tabNames[i]}
+                    </div>
+                </div>
                 tabResult.push(el);
             }
             return tabResult;

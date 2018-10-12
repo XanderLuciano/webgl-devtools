@@ -1,5 +1,4 @@
-define([],
-function () {
+define([], function () {
     return React.createClass({
         render() {
             let className = "context-bar-element";
