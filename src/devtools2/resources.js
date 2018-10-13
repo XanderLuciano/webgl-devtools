@@ -4,13 +4,14 @@ resourceTabs = [
     "Buffers",
     "Frames Buffers",
     "Render Buffers"
-]
+];
+
 resourceNames = [
     "Texture",
     "Buffer",
     "Frame Buffer",
     "Render Buffer"
-]
+];
 
 define(["messages"], function (Messages) {
     var Resources = React.createClass({
@@ -25,25 +26,26 @@ define(["messages"], function (Messages) {
                 activeResource: null
             };
         },
-        componentWillMount: function() {
-            Messages.connection.onMessage.addListener(function(msg) {
-                if (msg.source != "content") {return;}
 
-                if (msg.type == messageType.GET_TEXTURES) {
+        componentWillMount: function() {
+            Messages.connection.onMessage.addListener( (msg) => {
+                if (msg.source !== "content") {return;}
+
+                if (msg.type === messageType.GET_TEXTURES) {
                     this.setState({textures: msg.data.length});
-                } else if (msg.type == messageType.GET_BUFFERS) {
+                } else if (msg.type === messageType.GET_BUFFERS) {
                     this.setState({buffers: msg.data.length});
-                } else if (msg.type == messageType.GET_FRAME_BUFFERS) {
+                } else if (msg.type === messageType.GET_FRAME_BUFFERS) {
                     this.setState({frameBuffers: msg.data.length});
-                } else if (msg.type == messageType.GET_RENDER_BUFFERS) {
+                } else if (msg.type === messageType.GET_RENDER_BUFFERS) {
                     this.setState({renderBuffers: msg.data.length});
-                } else if (msg.type == messageType.GET_TEXTURE) {
+                } else if (msg.type === messageType.GET_TEXTURE) {
                     this.setState({activeResource: JSON.parse(msg.data)});
-                } else if (msg.type == messageType.GET_BUFFER) {
+                } else if (msg.type === messageType.GET_BUFFER) {
                     this.setState({activeResource: JSON.parse(msg.data)});
                 }
 
-            }.bind(this));
+            });
 
             Messages.sendMessage(this.props.activeContext, messageType.DISABLE_ALL, {});
             Messages.sendMessage(this.props.activeContext, messageType.GET_TEXTURES, {});
@@ -51,27 +53,30 @@ define(["messages"], function (Messages) {
             Messages.sendMessage(this.props.activeContext, messageType.GET_FRAME_BUFFERS, {});
             Messages.sendMessage(this.props.activeContext, messageType.GET_RENDER_BUFFERS, {});
         },
+
         switchTab: function(i) {
             Messages.sendMessage(this.props.activeContext, messageType.DISABLE_ALL, {});
             this.setState({selectedTab: i, selectedResource:0, activeResource: null});
         },
+
         switchResource: function(i) {
             this.setState({selectedResource: i});
-            if (this.state.selectedTab == 1) {
+            if (this.state.selectedTab === 1) {
                 Messages.sendMessage(this.props.activeContext, messageType.GET_TEXTURE, {"index": i});
-            } else if (this.state.selectedTab == 2) {
+            } else if (this.state.selectedTab === 2) {
                 Messages.sendMessage(this.props.activeContext, messageType.GET_BUFFER, {"index": i});
-            } else if (this.state.selectedTab == 3) {
+            } else if (this.state.selectedTab === 3) {
                 Messages.sendMessage(this.props.activeContext, messageType.GET_FRAME_BUFFER, {"index": i});
-            } else if (this.state.selectedTab == 4) {
+            } else if (this.state.selectedTab === 4) {
                 Messages.sendMessage(this.props.activeContext, messageType.GET_RENDER_BUFFER, {"index": i});
             }
         },
+
         getTabs: function() {
             tabResult = [];
             for (var i = 0; i < resourceTabs.length; i++) {
                 var className = "split-view-table-element";
-                if (this.state.selectedTab == i) {
+                if (this.state.selectedTab === i) {
                     className += " split-view-table-element-selected";
                 }
 
@@ -79,16 +84,17 @@ define(["messages"], function (Messages) {
                         <div className={".split-view-table-element-text"}>
                             {resourceTabs[i]}
                         </div>
-                     </div>
+                     </div>;
                 tabResult.push(el);
             }
             return tabResult;
         },
+
         getResourceList: function(name, length) {
             tabResult = [];
             for (var i = 0; i < length; i++) {
                 var className = "split-view-table-element";
-                if (this.state.selectedResource == i) {
+                if (this.state.selectedResource === i) {
                     className += " split-view-table-element-selected";
                 }
 
@@ -96,17 +102,18 @@ define(["messages"], function (Messages) {
                         <div className={".split-view-table-element-text"}>
                             {name + i}
                         </div>
-                     </div>
+                     </div>;
                 tabResult.push(el);
             }
             return tabResult;
         },
+
         getResourceView: function() {
             var resourceView = [];
 
             if (this.state.activeResource) {
 
-                if (this.state.selectedTab == 1) {
+                if (this.state.selectedTab === 1) {
 
                     var resource = this.state.activeResource;
                     var source = resource.source;
@@ -182,14 +189,14 @@ define(["messages"], function (Messages) {
                         resourceView.push(el);
                     }
 
-                } else if (this.state.selectedTab == 2) {
+                } else if (this.state.selectedTab === 2) {
 
                     var resource = this.state.activeResource;
                     var source = resource.source;
 
-                    el = <div className="container">
+                    let el = <div className="container">
                         <div className="heading">Buffer</div>
-                        <div>{JSON.stringify(source.arraySrc)}</div>
+                        <div>{JSON.stringify(source.arraySrc, null, 2)}</div>
                     </div>;
                     resourceView.push(el);
 
@@ -199,7 +206,7 @@ define(["messages"], function (Messages) {
                     </div>;
                     resourceView.push(el);
 
-                } else if (this.state.selectedTab == 3) {
+                } else if (this.state.selectedTab === 3) {
 
                     var resource = this.state.activeResource;
                     var source = resource.source;
@@ -246,7 +253,7 @@ define(["messages"], function (Messages) {
                         resourceView.push(el);
                     }
 
-                } else if (this.state.selectedTab == 4) {
+                } else if (this.state.selectedTab === 4) {
 
                     var resource = this.state.activeResource;
 
@@ -289,6 +296,7 @@ define(["messages"], function (Messages) {
             }
             return resourceView;
         },
+
         render: function() {
             var resourceName = resourceNames[this.state.selectedTab - 1];
             var length = 0;
@@ -308,7 +316,7 @@ define(["messages"], function (Messages) {
             }
 
             var render;
-            if (this.state.selectedTab == 0) {
+            if (this.state.selectedTab === 0) {
                 render = <div className="container">
                     <div className="heading">Resources</div>
                     <div>View textures, buffers, frame buffers, and render buffers.</div>
@@ -329,7 +337,7 @@ define(["messages"], function (Messages) {
                     </div>
                 </div>;
 
-                if (length == 0) {
+                if (length === 0) {
                     render = <div className="container">
                         <div className="heading">
                             No {resourceName} Detected
